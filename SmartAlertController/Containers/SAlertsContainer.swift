@@ -82,7 +82,7 @@ class SAlertsContainer: UIView {
     
     // MARK: Helpers
     
-    fileprivate func container(forAlert alert: SmartAlertView) -> SAlertContainer? {
+    fileprivate func container(forAlert alert: UIView) -> SAlertContainer? {
         return alertContainers.filter({ $0.alertView.isEqual(alert) }).first
     }
     
@@ -90,7 +90,7 @@ class SAlertsContainer: UIView {
 
 extension SAlertsContainer: SManagedAlertViewContainer {
     
-    func add(alertView alert: SmartAlertView, configuration: SConfiguration) {
+    func add(alertView alert: UIView, configuration: SConfiguration) {
         let container = SAlertContainer(alertView: alert,
                                         configuration: configuration,
                                         layoutCalculator: layoutCalculator)
@@ -104,7 +104,7 @@ extension SAlertsContainer: SManagedAlertViewContainer {
         }
     }
     
-    func remove(alertView alert: SmartAlertView) {
+    func remove(alertView alert: UIView) {
         guard let container = container(forAlert: alert),
             let index = alertContainers.index(of: container)
             else { return }
@@ -120,7 +120,7 @@ extension SAlertsContainer: SManagedAlertViewContainer {
         alertContainers = [SAlertContainer]()
     }
     
-    func update(alertView alert: SmartAlertView) {
+    func update(alertView alert: UIView) {
         guard let container = container(forAlert: alert) else { return }
         container.layout(animated: true)
     }
@@ -131,7 +131,7 @@ extension SAlertsContainer: SManagedAlertViewContainer {
         })
     }
     
-    func set(configuration: SConfiguration, toAlertView alert: SmartAlertView) {
+    func set(configuration: SConfiguration, toAlertView alert: UIView) {
         guard let container = container(forAlert: alert) else { return }
         container.configuration = configuration
         container.layout(animated: true)

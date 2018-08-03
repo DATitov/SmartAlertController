@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TitledAlertView: SmartAlertView {
+class TitledAlertView: UIView {
 
     let titleLabel = UILabel()
     

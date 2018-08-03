@@ -18,7 +18,7 @@ class SAlertContainer: UIView {
     
     var animationsDuration: Double = 0.2
     
-    var alertView: SmartAlertView!
+    var alertView: UIView!
     var layoutCalculator: LayoutCalculator!
     var configuration: SConfiguration!
     
@@ -26,7 +26,7 @@ class SAlertContainer: UIView {
     
     var availableSize: CGSize?
 
-    init(alertView: SmartAlertView,
+    init(alertView: UIView,
          configuration: SConfiguration,
          layoutCalculator: LayoutCalculator) {
         super.init(frame: .zero)

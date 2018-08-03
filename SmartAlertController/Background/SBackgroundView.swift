@@ -31,6 +31,7 @@ final class SBackgroundView: UIView {
     
     func setupUI() {
 //        backgroundColor = UIColor.blue
+        change(backgrounType: .defaultView)
     }
     
     override func layoutSubviews() {
@@ -58,7 +59,7 @@ final class SBackgroundView: UIView {
     }
     
     private func defaultBV() -> UIView {
-        let effect = UIBlurEffect(style: .light)
+        let effect = UIBlurEffect(style: .dark)
         let view = UIVisualEffectView(effect: effect)
         return view
     }

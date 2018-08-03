@@ -8,25 +8,17 @@
 
 import UIKit
 
-public typealias SmartAlertView = (UIView & SAlertView)
-
-public protocol SAlertView {
-    
-//    var configuration: SConfiguration? { get set }
-    
-}
-
 public protocol SManagedAlertViewContainer: class {
     
-    func add(alertView alert: SmartAlertView, configuration: SConfiguration)
-    func remove(alertView alert: SmartAlertView)
+    func add(alertView alert: UIView, configuration: SConfiguration)
+    func remove(alertView alert: UIView)
     
     func removeAllAlerts()
     
-    func update(alertView alert: SmartAlertView)
+    func update(alertView alert: UIView)
     func updateAllalertViews()
     
-    func set(configuration: SConfiguration, toAlertView alert: SmartAlertView)
+    func set(configuration: SConfiguration, toAlertView alert: UIView)
     
 }
 

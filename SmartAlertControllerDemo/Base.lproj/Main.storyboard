@@ -90,8 +90,32 @@
                                             <constraint firstItem="ufH-FN-gYn" firstAttribute="centerY" secondItem="Hld-g6-YZ7" secondAttribute="centerY" id="19n-Tb-1Tw"/>
                                         </constraints>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="0Ib-p3-2rH">
+                                        <rect key="frame" x="0.0" y="124" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Ib-p3-2rH" id="V94-lL-6Oq">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animations Duration Test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sj6-sv-DmS">
+                                                    <rect key="frame" x="91.5" y="1" width="192.5" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="dq7-bt-9xb"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.099581748900000003" green="0.1997625431" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Sj6-sv-DmS" firstAttribute="leading" secondItem="V94-lL-6Oq" secondAttribute="leading" constant="91.5" id="8Lc-K2-Nro"/>
+                                                <constraint firstItem="Sj6-sv-DmS" firstAttribute="centerX" secondItem="V94-lL-6Oq" secondAttribute="centerX" id="I0V-Sh-EB0"/>
+                                                <constraint firstItem="Sj6-sv-DmS" firstAttribute="centerY" secondItem="V94-lL-6Oq" secondAttribute="centerY" id="yXt-kt-NQF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="106" id="aFo-40-0gi">
-                                        <rect key="frame" x="0.0" y="124" width="375" height="106"/>
+                                        <rect key="frame" x="0.0" y="168" width="375" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aFo-40-0gi" id="Vhf-tn-IhU">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="105.5"/>

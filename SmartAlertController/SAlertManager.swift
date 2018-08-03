@@ -55,11 +55,11 @@ public class SAlertManager {
 
 extension SAlertManager: SManagedAlertViewContainer {
     
-    public func add(alertView alert: SmartAlertView, configuration: SConfiguration) {
+    public func add(alertView alert: UIView, configuration: SConfiguration) {
         viewController.add(alertView: alert, configuration: configuration)
     }
     
-    public func remove(alertView alert: SmartAlertView) {
+    public func remove(alertView alert: UIView) {
         viewController.remove(alertView: alert)
     }
     
@@ -67,7 +67,7 @@ extension SAlertManager: SManagedAlertViewContainer {
         viewController.removeAllAlerts()
     }
     
-    public func update(alertView alert: SmartAlertView) {
+    public func update(alertView alert: UIView) {
         viewController.update(alertView: alert)
     }
     
@@ -75,7 +75,7 @@ extension SAlertManager: SManagedAlertViewContainer {
         viewController.updateAllalertViews()
     }
     
-    public func set(configuration: SConfiguration, toAlertView alert: SmartAlertView) {
+    public func set(configuration: SConfiguration, toAlertView alert: UIView) {
         viewController.set(configuration: configuration, toAlertView: alert)
     }
     

@@ -10,7 +10,7 @@ import UIKit
 
 typealias VoidClosure = () -> ()
 
-class AppearenceManagerAlertView: UIView, SAlertView {
+class AppearenceManagerAlertView: UIView {
     
     weak var manager: SAlertManager?
     

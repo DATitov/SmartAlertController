@@ -9,7 +9,7 @@
 import UIKit
 import SmartAlertController
 
-class DemoAlertView: SmartAlertView {
+class DemoAlertView: UIView {
     
     weak var manager: SAlertManager?
     

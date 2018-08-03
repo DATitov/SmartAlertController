@@ -34,6 +34,8 @@ class MainTableViewController: UITableViewController {
             presentBindingsTest()
         case 1:
             presentAppearenceTest()
+        case 2:
+            presentDurationTest()
         default:
             return
         }
@@ -74,7 +76,41 @@ class MainTableViewController: UITableViewController {
             conf.horisontalBinding = .center
             conf.viewHeight = 200
             conf.appearenceDirection = .bottom
-            //        conf.appearenceAnimation = .fade
+            self?.manager.add(alertView: alert, configuration: conf)
+        }()
+        
+        manager.set(acceptableVerticalScrollOffset: OffsetRange(max: 50))
+        manager.present(aboveViewController: self)
+    }
+    
+    func presentDurationTest() {
+        
+        _ = {
+            let av = DemoAlertView()
+            av.manager = manager
+            let conf = SConfiguration()
+            av.configuration = conf
+            conf.topOffset = 70.0
+            conf.viewHeight = 200.0
+            conf.viewWidth = 200.0
+            conf.verticalBinding = .top
+            conf.horisontalBinding = .left
+            conf.appearenceDirection = .left
+            conf.dismissDirection = .right
+            manager.add(alertView: av, configuration: conf)
+        }()
+        
+        _ = { [weak self] in
+            let alert = AnimationDurationAlertView()
+            alert.manager = self?.manager
+            
+            let conf = SConfiguration()
+            conf.bottomOffset = 20.0
+            conf.leadingOffset = 20.0
+            conf.verticalBinding = .bottom
+            conf.horisontalBinding = .center
+            conf.viewHeight = 100
+            conf.appearenceDirection = .bottom
             self?.manager.add(alertView: alert, configuration: conf)
         }()
         
