@@ -10,7 +10,8 @@ import UIKit
 
 public enum SBackgroundViewType {
     case defaultView
-    case custom(view: UIView?)
+    case blurred(style: UIBlurEffectStyle)
+    case custom(view: UIView)
 }
 
 final class SBackgroundView: UIView {
@@ -45,11 +46,9 @@ final class SBackgroundView: UIView {
         switch type {
         case .defaultView:
             backgroundView = defaultBV()
+        case .blurred(let style):
+            backgroundView = bluredView(style: style)
         case .custom(let view):
-            guard let view = view else {
-                backgroundView = defaultBV()
-                break
-            }
             backgroundView = view
         }
         if let backgroundView = backgroundView {
@@ -58,10 +57,15 @@ final class SBackgroundView: UIView {
         setNeedsLayout()
     }
     
-    private func defaultBV() -> UIView {
-        let effect = UIBlurEffect(style: .dark)
+    private func bluredView(style: UIBlurEffectStyle) -> UIView {
+        let effect = UIBlurEffect(style: style)
         let view = UIVisualEffectView(effect: effect)
+        view.tintColor = UIColor.red
         return view
+    }
+    
+    private func defaultBV() -> UIView {
+        return bluredView(style: .dark)
     }
     
 }
