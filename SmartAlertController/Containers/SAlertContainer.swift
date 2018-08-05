@@ -50,6 +50,7 @@ class SAlertContainer: UIView {
             guard let strongSelf = self else { return }
             strongSelf.frame = frame
             strongSelf.alertView.frame = strongSelf.bounds
+            strongSelf.alertView.layoutIfNeeded()
         }
         
         if animated {

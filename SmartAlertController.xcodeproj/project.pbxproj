@@ -44,6 +44,7 @@
 		A93A763A2115C7B200DD23B3 /* SAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A76382115C65600DD23B3 /* SAnimator.swift */; };
 		A93A763C2116C10D00DD23B3 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A763B2116C10D00DD23B3 /* KeyboardObserver.swift */; };
 		A93A763D2116C19E00DD23B3 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A763B2116C10D00DD23B3 /* KeyboardObserver.swift */; };
+		A93A76402116ED4C00DD23B3 /* ResizeTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A763F2116ED4C00DD23B3 /* ResizeTestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -89,6 +90,7 @@
 		A93A76352115B76200DD23B3 /* KeyboardObservingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObservingView.swift; sourceTree = "<group>"; };
 		A93A76382115C65600DD23B3 /* SAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAnimator.swift; sourceTree = "<group>"; };
 		A93A763B2116C10D00DD23B3 /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
+		A93A763F2116ED4C00DD23B3 /* ResizeTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeTestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 		6C1CB1F520D56C8100136A90 /* SmartAlertControllerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				A93A763E2116ED3D00DD23B3 /* ResizeTest */,
 				A93A76342115B74500DD23B3 /* KeyboardObservingTest */,
 				6C93D2A12113564800C97814 /* AnimationDurationTest */,
 				6C97CBE5210DD877007F0493 /* AppearenceTest */,
@@ -230,6 +233,14 @@
 				A93A76352115B76200DD23B3 /* KeyboardObservingView.swift */,
 			);
 			path = KeyboardObservingTest;
+			sourceTree = "<group>";
+		};
+		A93A763E2116ED3D00DD23B3 /* ResizeTest */ = {
+			isa = PBXGroup;
+			children = (
+				A93A763F2116ED4C00DD23B3 /* ResizeTestView.swift */,
+			);
+			path = ResizeTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,6 +395,7 @@
 				6C4CBB3C20D6477B008878C1 /* DemoAlertView.swift in Sources */,
 				6C77C60421032B590079C1BC /* LayoutCalculator.swift in Sources */,
 				6C3AE50C2110D68900FA7B54 /* OffsetRange.swift in Sources */,
+				A93A76402116ED4C00DD23B3 /* ResizeTestView.swift in Sources */,
 				6C97CBEB210DE250007F0493 /* AlertManagerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

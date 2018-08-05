@@ -38,6 +38,8 @@ class MainTableViewController: UITableViewController {
             presentDurationTest()
         case 3:
             presentKayboardObservingTest()
+        case 4:
+            presentResizeTest()
         default:
             return
         }
@@ -127,6 +129,21 @@ class MainTableViewController: UITableViewController {
             let conf = SConfiguration()
             alert.conf = conf
             conf.viewHeight = 100
+            conf.leadingOffset = 26
+            self?.manager.add(alertView: alert, configuration: conf)
+        }()
+        
+        manager.set(acceptableVerticalScrollOffset: OffsetRange(min: -50, max: 50))
+        manager.present(aboveViewController: self)
+    }
+    
+    func presentResizeTest() {
+        _ = { [weak self] in
+            let alert = ResizeTestView()
+            alert.manager = self?.manager
+            let conf = SConfiguration()
+            alert.conf = conf
+            conf.viewHeight = 200
             conf.leadingOffset = 26
             self?.manager.add(alertView: alert, configuration: conf)
         }()
