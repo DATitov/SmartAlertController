@@ -100,17 +100,21 @@ extension KeyboardObservingView: UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField.tag {
         case 0:
-            allowPasswordEntry = true
-            if let conf = conf, let height = conf.viewHeight {
-                conf.viewHeight = height + 45.0
-            }
-            if var heigh = conf?.viewHeight {
-                heigh += CGFloat(45.0)
-            }
-            manager?.update(alertView: self)
-            passwordTextField.alpha = 0
-            UIView.animate(withDuration: 0.2) {
-                self.passwordTextField.alpha = 1
+            if allowPasswordEntry {
+                passwordTextField.becomeFirstResponder()
+            }else{
+                if let conf = conf, let height = conf.viewHeight {
+                    conf.viewHeight = height + 45.0
+                }
+                if var heigh = conf?.viewHeight {
+                    heigh += CGFloat(45.0)
+                }
+                allowPasswordEntry = true
+                manager?.update(alertView: self)
+                passwordTextField.alpha = 0
+                UIView.animate(withDuration: 0.2) {
+                    self.passwordTextField.alpha = 1
+                }
             }
             return true
         case 1:

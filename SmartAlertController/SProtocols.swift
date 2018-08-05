@@ -16,7 +16,7 @@ public protocol SManagedAlertViewContainer: class {
     func removeAllAlerts()
     
     func update(alertView alert: UIView)
-    func updateAllalertViews()
+    func updateAllAlertViews()
     
     func set(configuration: SConfiguration, toAlertView alert: UIView)
     

@@ -77,8 +77,8 @@ extension SAlertManager: SManagedAlertViewContainer {
         viewController.update(alertView: alert)
     }
     
-    public func updateAllalertViews() {
-        viewController.updateAllalertViews()
+    public func updateAllAlertViews() {
+        viewController.updateAllAlertViews()
     }
     
     public func set(configuration: SConfiguration, toAlertView alert: UIView) {

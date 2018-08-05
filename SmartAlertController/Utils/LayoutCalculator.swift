@@ -122,4 +122,14 @@ class LayoutCalculator {
         }
     }
     
+    func requiredHeight(forConfiguration conf: SConfiguration, viewHeight: CGFloat) -> CGFloat {
+        guard let alertHeight = conf.viewHeight else {
+            return 0
+        }
+        let defaultVerticalOffset: CGFloat = 20.0
+        let topOffset = conf.topOffset ?? conf.bottomOffset ?? defaultVerticalOffset
+        let bottomOffset = conf.bottomOffset ?? conf.topOffset ?? defaultVerticalOffset
+        return topOffset + alertHeight + bottomOffset
+    }
+    
 }

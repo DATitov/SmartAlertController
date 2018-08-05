@@ -130,7 +130,6 @@
 		6C1CB1D620D53B6400136A90 /* SmartAlertController */ = {
 			isa = PBXGroup;
 			children = (
-				A93A76372115C64B00DD23B3 /* Helpers */,
 				6C3AE5092110D5AB00FA7B54 /* Models */,
 				6C1CB1D720D53B6400136A90 /* SmartAlertController.h */,
 				6C432FC92108E72900884001 /* Containers */,
@@ -157,6 +156,8 @@
 		6C1CB1ED20D55A7200136A90 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A93A76382115C65600DD23B3 /* SAnimator.swift */,
+				A93A763B2116C10D00DD23B3 /* KeyboardObserver.swift */,
 				6C1CB1EE20D55A8800136A90 /* LayoutCalculator.swift */,
 			);
 			path = Utils;
@@ -229,15 +230,6 @@
 				A93A76352115B76200DD23B3 /* KeyboardObservingView.swift */,
 			);
 			path = KeyboardObservingTest;
-			sourceTree = "<group>";
-		};
-		A93A76372115C64B00DD23B3 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				A93A76382115C65600DD23B3 /* SAnimator.swift */,
-				A93A763B2116C10D00DD23B3 /* KeyboardObserver.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

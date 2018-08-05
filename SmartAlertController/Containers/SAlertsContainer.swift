@@ -102,10 +102,21 @@ class SAlertsContainer: UIView {
                                         width: frame.size.width,
                                         height: frame.size.height - (keyboardVisibleHeight ?? 0.0))
         scrollView.frame = scrollViewFrame
-        scrollView.contentSize = CGSize(width: frame.size.width,
-                                        height: frame.size.height + 1)
+        let requiredHeight = alertContainers
+            .map({ $0.configuration })
+            .map { [weak self] (conf) -> CGFloat in
+                guard let strSelf = self else {
+                    return 0
+                }
+                return strSelf.layoutCalculator.requiredHeight(forConfiguration: conf!,
+                                                               viewHeight: scrollViewFrame.size.height)
+            }
+            .max() ?? frame.size.height + 1
+        let contentSize = CGSize(width: scrollViewFrame.size.width,
+                                 height: max(requiredHeight, scrollViewFrame.size.height + 1))
+        scrollView.contentSize = contentSize
         alertContainers.forEach({
-            $0.availableSize = scrollViewFrame.size
+            $0.availableSize = contentSize
         })
     }
     
@@ -170,10 +181,11 @@ extension SAlertsContainer: SManagedAlertViewContainer {
     
     func update(alertView alert: UIView) {
         guard let container = container(forAlert: alert) else { return }
+        baseLayout()
         container.layout(animated: true)
     }
     
-    func updateAllalertViews() {
+    func updateAllAlertViews() {
         alertContainers.forEach({
             $0.layout(animated: true)
         })

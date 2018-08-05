@@ -173,8 +173,8 @@ extension SAlertViewController: SManagedAlertViewContainer {
         container.update(alertView: alert)
     }
     
-    func updateAllalertViews() {
-        container.updateAllalertViews()
+    func updateAllAlertViews() {
+        container.updateAllAlertViews()
     }
     
     func set(configuration: SConfiguration, toAlertView alert: UIView) {
