@@ -36,6 +36,8 @@ class MainTableViewController: UITableViewController {
             presentAppearenceTest()
         case 2:
             presentDurationTest()
+        case 3:
+            presentKayboardObservingTest()
         default:
             return
         }
@@ -115,6 +117,21 @@ class MainTableViewController: UITableViewController {
         }()
         
         manager.set(acceptableVerticalScrollOffset: OffsetRange(max: 50))
+        manager.present(aboveViewController: self)
+    }
+    
+    func presentKayboardObservingTest() {
+        _ = { [weak self] in
+            let alert = KeyboardObservingView()
+            alert.manager = self?.manager
+            let conf = SConfiguration()
+            alert.conf = conf
+            conf.viewHeight = 100
+            conf.leadingOffset = 26
+            self?.manager.add(alertView: alert, configuration: conf)
+        }()
+        
+        manager.set(acceptableVerticalScrollOffset: OffsetRange(min: -50, max: 50))
         manager.present(aboveViewController: self)
     }
 

@@ -10,9 +10,12 @@ import UIKit
 
 class SAlertsContainer: UIView {
     
+    var animator: SAnimator!
+    
     var appeared = false
     var acceptableHorisontalScrollOffset: OffsetRange?
     var acceptableVerticalScrollOffset: OffsetRange?
+    var keyboardVisibleHeight: CGFloat?
     
     var animationsDuration: Double = 0.2 {
         didSet {
@@ -61,14 +64,11 @@ class SAlertsContainer: UIView {
             alertContainers.filter({ $0.frame.contains(tapPoint) }).count < 1
             else { return }
         action()
-        
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        scrollView.frame = bounds
-        scrollView.contentSize = CGSize(width: frame.size.width, height: frame.size.height + 1)
         layout(animated: false, completion: {  })
     }
     
@@ -76,8 +76,56 @@ class SAlertsContainer: UIView {
         let availableSize = frame.size
         alertContainers.forEach({
             $0.availableSize = availableSize
-            $0.layout(animated: animated)
         })
+        let animation = { [weak self] in
+            guard let strSelf = self else { return }
+            strSelf.baseLayout()
+            strSelf.alertContainers.forEach({
+                $0.layout(animated: false)
+            })
+        }
+        if animated {
+            UIView.animate(withDuration: animationsDuration,
+                           animations: {
+                            animation()
+            }) { _ in
+                completion()
+            }
+        }else{
+            animation()
+            completion()
+        }
+    }
+    
+    fileprivate func baseLayout() {
+        let scrollViewFrame = CGRect(x: 0, y: 0,
+                                        width: frame.size.width,
+                                        height: frame.size.height - (keyboardVisibleHeight ?? 0.0))
+        scrollView.frame = scrollViewFrame
+        scrollView.contentSize = CGSize(width: frame.size.width,
+                                        height: frame.size.height + 1)
+        alertContainers.forEach({
+            $0.availableSize = scrollViewFrame.size
+        })
+    }
+    
+    func layoutOnKeyboardVisibleHeightChanged(duration: TimeInterval, options: UIViewAnimationOptions?) {
+        let animation: () -> Void = { [weak self] in
+            self?.baseLayout()
+            self?.alertContainers.forEach({
+                $0.layout(animated: false)
+            })
+        }
+        if let options = options {
+            UIView.animate(withDuration: duration,
+                           delay: 0,
+                           options: options,
+                           animations: animation,
+                           completion: nil)
+        }else{
+            UIView.animate(withDuration: duration,
+                           animations: animation)
+        }
     }
     
     // MARK: Helpers
@@ -159,9 +207,17 @@ extension SAlertsContainer: Appearable {
 extension SAlertsContainer: UIScrollViewDelegate {
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if let range = acceptableHorisontalScrollOffset, !range.inRange(value: scrollView.contentOffset.x) {
+        var offset = scrollView.contentOffset
+        if let range = acceptableHorisontalScrollOffset, !range.inRange(value: offset.x) {
             notAcceptableOffsetReached?()
-        }else if let range = acceptableVerticalScrollOffset, !range.inRange(value: scrollView.contentOffset.y) {
+        }
+        if offset.y > 0 &&
+            offset.y <= scrollView.contentSize.height - scrollView.frame.size.height {
+            return
+        }else if offset.y > 0 {
+            offset.y -= scrollView.contentSize.height - scrollView.frame.size.height
+        }
+        if let range = acceptableVerticalScrollOffset, !range.inRange(value: offset.y) {
             notAcceptableOffsetReached?()
         }
     }

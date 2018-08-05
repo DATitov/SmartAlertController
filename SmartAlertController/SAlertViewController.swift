@@ -9,6 +9,9 @@
 import UIKit
 
 class SAlertViewController: UIViewController {
+    
+    private let animator = SAnimator()
+    private let keyboardObserver = KeyboardObserver()
 
     var appeared = false {
         didSet {
@@ -22,27 +25,34 @@ class SAlertViewController: UIViewController {
             container.animationsDuration = animationsDuration
         }
     }
-    let backgroundView = SBackgroundView()
-    let container = SAlertsContainer()
     
-    var firstLayoutPassed = false
+    fileprivate let backgroundView = SBackgroundView()
+    fileprivate let container = SAlertsContainer()
+    
+    fileprivate var firstLayoutPassed = false
     
     var backgroundPressed: (() -> ())?
     
-    func change(backgrounType type: SBackgroundViewType) {
-        backgroundView.change(backgrounType: type)
-    }
+    // MARK: - Lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
-        modalPresentationStyle = .overFullScreen
+        baseInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
+        baseInit()
+    }
+    
+    func baseInit() {
+        container.animator = animator
         modalPresentationStyle = .overFullScreen
+        keyboardObserver.keyboardFrameWillChange = { [weak self] (endFrame, duration, options) in
+            self?.keyboardFrameChanged(frame: endFrame, duration: duration, options: options)
+        }
     }
     
     override func viewDidLoad() {
@@ -81,6 +91,12 @@ class SAlertViewController: UIViewController {
         }
     }
     
+    func change(backgrounType type: SBackgroundViewType) {
+        backgroundView.change(backgrounType: type)
+    }
+    
+    // MARK: - Appearence
+    
     private func appear() {
         ([ backgroundView, container] as [Appearable]).forEach({ $0.appear(animated: true) })
         appeared = true
@@ -106,7 +122,9 @@ class SAlertViewController: UIViewController {
         super.dismiss(animated: flag, completion: completion)
     }
     
-    func configureView() {
+    // MARK: - Configuration
+    
+    private func configureView() {
         view.backgroundColor = UIColor.clear;
     }
     
@@ -122,8 +140,21 @@ class SAlertViewController: UIViewController {
         container.notAcceptableOffsetReached = notAcceptableScrollOffsetReached
     }
 
+    func keyboardFrameChanged(frame: CGRect, duration: TimeInterval, options: UIViewAnimationOptions?) {
+        container.keyboardVisibleHeight = { (endFrame, containerHeight) in
+            if endFrame.origin.y >= containerHeight {
+                return 0
+            }else{
+                return containerHeight - endFrame.origin.y
+            }
+        }(frame, container.frame.size.height)
+        
+        container.layoutOnKeyboardVisibleHeightChanged(duration: duration, options: options)
+    }
+    
 }
 
+// MARK: - SManagedAlertViewContainer
 extension SAlertViewController: SManagedAlertViewContainer {
     
     func add(alertView alert: UIView, configuration: SConfiguration) {

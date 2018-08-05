@@ -31,7 +31,6 @@ final class SBackgroundView: UIView {
     }
     
     func setupUI() {
-//        backgroundColor = UIColor.blue
         change(backgrounType: .defaultView)
     }
     
@@ -97,5 +96,5 @@ extension SBackgroundView: Appearable {
                         self.backgroundView?.alpha = 0
         })
     }
-    
+        
 }

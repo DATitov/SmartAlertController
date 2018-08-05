@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SmartAlertController
 
 class DemoAlertView: UIView {
     

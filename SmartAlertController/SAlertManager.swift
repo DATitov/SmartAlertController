@@ -19,9 +19,15 @@ public class SAlertManager {
     
     private let viewController = SAlertViewController()
     
+    var backgroundPressed: (() -> ())?
+    
     init() {
         viewController.backgroundPressed = { [weak self] in
-            self?.dismiss()
+            if let action = self?.backgroundPressed {
+                action()
+            }else{
+                self?.dismiss()
+            }
         }
         viewController.set { [weak self] in
             self?.dismiss()
