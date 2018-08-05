@@ -132,8 +132,8 @@
 		6C1CB1D620D53B6400136A90 /* SmartAlertController */ = {
 			isa = PBXGroup;
 			children = (
-				6C3AE5092110D5AB00FA7B54 /* Models */,
 				6C1CB1D720D53B6400136A90 /* SmartAlertController.h */,
+				6C3AE5092110D5AB00FA7B54 /* Models */,
 				6C432FC92108E72900884001 /* Containers */,
 				6C77C60521032CAF0079C1BC /* Background */,
 				6C1CB1ED20D55A7200136A90 /* Utils */,

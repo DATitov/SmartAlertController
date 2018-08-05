@@ -17,17 +17,16 @@ Pod::Spec.new do |s|
 
   s.name         = "SmartAlertController"
   s.version      = "0.0.1"
-  s.summary      = "A short description of SmartAlertController."
+  s.summary      = "The simpliest way to present custom view in alert style!"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  s.description  = <<-DESC
-                   DESC
+  s.description  = "SmartAlertController is a tool which would help you presenting custom views as simple as adding a subview! Present one ore more views, change it's size and position bindings while it already presented!"
 
-  s.homepage     = "http://EXAMPLE/SmartAlertController"
+  s.homepage     = "https://github.com/Quott/SmartAlertController/tree/master"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -38,8 +37,8 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "MIT (example)"
-  # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  # s.license      = "MIT (example)"
+  s.license      = { :type => "MIT", :file => "LICENSE" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -55,7 +54,7 @@ Pod::Spec.new do |s|
   s.author             = { "Dmitriy Titov" => "dmitriytitov96@gmail.com" }
   # Or just: s.author    = "Dmitriy Titov"
   # s.authors            = { "Dmitriy Titov" => "dmitriytitov96@gmail.com" }
-  # s.social_media_url   = "http://twitter.com/Dmitriy Titov"
+  s.social_media_url   = "http://www.linkedin.com/in/dmitriytitov96"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -64,7 +63,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  # s.platform     = :ios, "5.0"
+  s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -79,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "http://EXAMPLE/SmartAlertController.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/Quott/SmartAlertController.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -90,10 +89,10 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "Classes/**/*.{h,m}"
+  s.source_files  = "SmartAlertController/**/*.{swift}"
   s.exclude_files = "Classes/Exclude"
 
-  # s.public_header_files = "Classes/**/*.h"
+  s.public_header_files = "Classes/**/*.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -129,7 +128,7 @@ Pod::Spec.new do |s|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  # s.requires_arc = true
+  s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
